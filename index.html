@@ -1,4 +1,4 @@
-
+Index · HTML
 Copy
 
 <!DOCTYPE html>
@@ -7,105 +7,413 @@ Copy
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Exposiciones en España 2025–2026</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root { --bg: #0d0b09; --surface: #16130f; --card: #1e1a14; --border: #2e2820; --gold: #c9a84c; --gold-light: #e8c97a; --cream: #f0e8d8; --muted: #8a7f70; --red: #c94c4c; --teal: #4c9c8a; --blue: #4c7ac9; --violet: #9c4cc9; --orange: #c97a4c; --rose: #c94c7a; --green: #6a9c4c; }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: var(--bg); color: var(--cream); font-family: 'DM Sans', sans-serif; font-weight: 300; min-height: 100vh; overflow-x: hidden; }
-body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 0; }
-header { position: relative; padding: 80px 60px 60px; border-bottom: 1px solid var(--border); overflow: hidden; }
-header::after { content: 'ARTE'; position: absolute; right: -20px; top: -30px; font-family: 'Playfair Display', serif; font-size: 280px; font-weight: 900; color: rgba(201,168,76,0.04); letter-spacing: -20px; pointer-events: none; user-select: none; }
-.header-label { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
-h1 { font-family: 'Playfair Display', serif; font-size: clamp(40px, 6vw, 80px); font-weight: 900; line-height: 1; color: var(--cream); max-width: 700px; }
-h1 em { font-style: italic; color: var(--gold); }
-.header-sub { margin-top: 20px; font-size: 15px; color: var(--muted); max-width: 520px; line-height: 1.7; }
-.header-stats { display: flex; gap: 40px; margin-top: 40px; flex-wrap: wrap; }
-.stat { display: flex; flex-direction: column; gap: 4px; }
-.stat-num { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; color: var(--gold-light); line-height: 1; }
-.stat-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
-.filters-section { position: sticky; top: 0; z-index: 100; background: rgba(13,11,9,0.97); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); padding: 14px 60px; display: flex; flex-direction: column; gap: 8px; }
-.filter-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-.filter-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); white-space: nowrap; min-width: 60px; }
-.filter-group { display: flex; gap: 5px; flex-wrap: wrap; }
-.filter-btn { padding: 5px 11px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 11px; cursor: pointer; transition: all 0.18s; border-radius: 2px; white-space: nowrap; }
-.filter-btn:hover { border-color: var(--gold); color: var(--gold); }
-.filter-btn.active { background: var(--gold); border-color: var(--gold); color: #0d0b09; font-weight: 500; }
-.vtype-btn[data-value="Galería"].active { background: var(--rose); border-color: var(--rose); color: #fff; }
-.vtype-btn[data-value="Museo"].active { background: var(--blue); border-color: var(--blue); color: #fff; }
-.vtype-btn[data-value="Centro Cultural"].active { background: var(--teal); border-color: var(--teal); color: #fff; }
-.vtype-btn[data-value="Feria"].active { background: var(--violet); border-color: var(--violet); color: #fff; }
-.vtype-btn[data-value="Espacio"].active { background: var(--orange); border-color: var(--orange); color: #fff; }
-.ml-auto { margin-left: auto; }
-.search-wrap { position: relative; }
-.search-wrap input { background: var(--card); border: 1px solid var(--border); color: var(--cream); padding: 7px 14px 7px 32px; font-family: 'DM Sans', sans-serif; font-size: 12px; width: 210px; border-radius: 2px; outline: none; transition: border-color 0.2s; }
-.search-wrap input:focus { border-color: var(--gold); }
-.search-wrap input::placeholder { color: var(--muted); }
-.search-wrap svg { position: absolute; left: 9px; top: 50%; transform: translateY(-50%); color: var(--muted); width: 13px; height: 13px; }
-.grid-section { padding: 36px 60px 80px; position: relative; z-index: 1; }
-.results-bar { font-size: 11px; color: var(--muted); letter-spacing: 1px; margin-bottom: 28px; text-transform: uppercase; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
-.results-bar .count { color: var(--gold); font-weight: 500; font-size: 13px; }
-.legend { display: flex; gap: 14px; flex-wrap: wrap; }
-.legend-item { display: flex; align-items: center; gap: 5px; font-size: 10px; letter-spacing: 1px; }
-.legend-dot { width: 7px; height: 7px; border-radius: 50%; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 2px; }
-.card { background: var(--card); border: 1px solid var(--border); padding: 26px 28px 22px; transition: transform 0.25s, box-shadow 0.25s, background 0.2s; position: relative; overflow: hidden; animation: fadeUp 0.45s ease both; }
-.card[data-vtype="Galería"] { background: #201419; border-color: #352028; }
-.card[data-vtype="Feria"] { background: #19151f; border-color: #2a2035; }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-.card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
-.card:hover { transform: translateY(-3px); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
-.card[data-type="Pintura"]::before { background: var(--gold); }
-.card[data-type="Fotografía"]::before { background: var(--teal); }
-.card[data-type="Arte Contemporáneo"]::before { background: var(--violet); }
-.card[data-type="Arte Digital"]::before { background: var(--blue); }
-.card[data-type="Escultura"]::before { background: var(--orange); }
-.card[data-type="Arte Conceptual"]::before { background: var(--red); }
-.card[data-type="Multidisciplinar"]::before { background: var(--muted); }
-.card[data-type="Retrospectiva"]::before { background: var(--gold-light); }
-.card[data-type="Dibujo"]::before { background: var(--green); }
-.vtype-badge { position: absolute; top: 13px; right: 13px; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 7px; border-radius: 2px; }
-.card-type { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 10px; display: inline-flex; align-items: center; gap: 5px; padding-right: 80px; }
-.card-type-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
-.card-title { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; line-height: 1.25; color: var(--cream); margin-bottom: 5px; }
-.card-artist { font-size: 12px; color: var(--gold-light); font-style: italic; margin-bottom: 13px; }
-.card-description { font-size: 12px; color: var(--muted); line-height: 1.65; margin-bottom: 18px; }
-.card-meta { display: flex; flex-direction: column; gap: 6px; padding-top: 16px; border-top: 1px solid var(--border); }
-.meta-row { display: flex; align-items: flex-start; gap: 8px; font-size: 11.5px; }
-.meta-icon { color: var(--gold); width: 12px; flex-shrink: 0; margin-top: 1px; }
-.meta-val { color: var(--cream); line-height: 1.4; }
-.meta-sub { color: var(--muted); font-size: 10.5px; }
-.venue-link { color: var(--cream); text-decoration: none; transition: color 0.15s; }
-.venue-link:hover { color: var(--gold-light); }
-.venue-link::after { content: ' ↗'; font-size: 9px; color: var(--gold); opacity: 0.7; }
-.dates-badge { display: inline-block; margin-top: 12px; padding: 3px 9px; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
-.dates-badge.open { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2); color: var(--gold); }
-.dates-badge.ending-soon { background: rgba(201,76,76,0.1); border: 1px solid rgba(201,76,76,0.3); color: var(--red); }
-.dates-badge.upcoming { background: rgba(76,156,138,0.1); border: 1px solid rgba(76,156,138,0.3); color: var(--teal); }
-.no-results { grid-column: 1/-1; text-align: center; padding: 80px 20px; color: var(--muted); }
-.no-results h3 { font-family: 'Playfair Display', serif; font-size: 28px; margin-bottom: 12px; color: var(--cream); }
-footer { border-top: 1px solid var(--border); padding: 26px 60px; font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; position: relative; z-index: 1; }
-.footer-brand { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 16px; }
-@media (max-width: 768px) {
-  header, .grid-section, footer { padding-left: 20px; padding-right: 20px; }
-  .filters-section { padding: 12px 20px; }
-  .search-wrap input { width: 160px; }
-  header::after { font-size: 100px; }
-  .ml-auto { margin-left: 0; width: 100%; }
-  .search-wrap input { width: 100%; }
-}
+  :root {
+    --bg: #0d0b09;
+    --surface: #16130f;
+    --card: #1e1a14;
+    --border: #2e2820;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --cream: #f0e8d8;
+    --muted: #8a7f70;
+    --red: #c94c4c;
+    --teal: #4c9c8a;
+    --blue: #4c7ac9;
+    --violet: #9c4cc9;
+    --orange: #c97a4c;
+    --rose: #c94c7a;
+    --green: #6a9c4c;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  header {
+    position: relative;
+    padding: 80px 60px 60px;
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  header::after {
+    content: 'ARTE';
+    position: absolute;
+    right: -20px;
+    top: -30px;
+    font-family: 'Playfair Display', serif;
+    font-size: 280px;
+    font-weight: 900;
+    color: rgba(201,168,76,0.04);
+    letter-spacing: -20px;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .header-label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 6vw, 80px);
+    font-weight: 900;
+    line-height: 1;
+    color: var(--cream);
+    max-width: 700px;
+  }
+
+  h1 em { font-style: italic; color: var(--gold); }
+
+  .header-sub {
+    margin-top: 20px;
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 520px;
+    line-height: 1.7;
+  }
+
+  .header-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+
+  .stat { display: flex; flex-direction: column; gap: 4px; }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .filters-section {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(13,11,9,0.97);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .filter-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .filter-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+    min-width: 60px;
+  }
+
+  .filter-group { display: flex; gap: 5px; flex-wrap: wrap; }
+
+  .filter-btn {
+    padding: 5px 11px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.18s;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  .filter-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .filter-btn.active { background: var(--gold); border-color: var(--gold); color: #0d0b09; font-weight: 500; }
+
+  /* Special active colours per vtype */
+  .vtype-btn[data-value="Galería"].active { background: var(--rose); border-color: var(--rose); color: #fff; }
+  .vtype-btn[data-value="Museo"].active { background: var(--blue); border-color: var(--blue); color: #fff; }
+  .vtype-btn[data-value="Centro Cultural"].active { background: var(--teal); border-color: var(--teal); color: #fff; }
+  .vtype-btn[data-value="Feria"].active { background: var(--violet); border-color: var(--violet); color: #fff; }
+  .vtype-btn[data-value="Espacio"].active { background: var(--orange); border-color: var(--orange); color: #fff; }
+
+  .ml-auto { margin-left: auto; }
+
+  .search-wrap { position: relative; }
+  .search-wrap input {
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--cream);
+    padding: 7px 14px 7px 32px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    width: 210px;
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .search-wrap input:focus { border-color: var(--gold); }
+  .search-wrap input::placeholder { color: var(--muted); }
+  .search-wrap svg {
+    position: absolute;
+    left: 9px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    width: 13px;
+    height: 13px;
+  }
+
+  .grid-section {
+    padding: 36px 60px 80px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .results-bar {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    margin-bottom: 28px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .results-bar .count { color: var(--gold); font-weight: 500; font-size: 13px; }
+
+  .legend { display: flex; gap: 14px; flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 5px; font-size: 10px; letter-spacing: 1px; }
+  .legend-dot { width: 7px; height: 7px; border-radius: 50%; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    gap: 2px;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 26px 28px 22px;
+    transition: transform 0.25s, box-shadow 0.25s, background 0.2s;
+    position: relative;
+    overflow: hidden;
+    animation: fadeUp 0.45s ease both;
+  }
+
+  .card[data-vtype="Galería"] { background: #201419; border-color: #352028; }
+  .card[data-vtype="Feria"] { background: #19151f; border-color: #2a2035; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+  }
+
+  .card:hover { transform: translateY(-3px); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+
+  .card[data-type="Pintura"]::before { background: var(--gold); }
+  .card[data-type="Fotografía"]::before { background: var(--teal); }
+  .card[data-type="Arte Contemporáneo"]::before { background: var(--violet); }
+  .card[data-type="Arte Digital"]::before { background: var(--blue); }
+  .card[data-type="Escultura"]::before { background: var(--orange); }
+  .card[data-type="Arte Conceptual"]::before { background: var(--red); }
+  .card[data-type="Multidisciplinar"]::before { background: var(--muted); }
+  .card[data-type="Retrospectiva"]::before { background: var(--gold-light); }
+  .card[data-type="Dibujo"]::before { background: var(--green); }
+
+  .vtype-badge {
+    position: absolute;
+    top: 13px;
+    right: 13px;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 7px;
+    border-radius: 2px;
+  }
+
+  .card-type {
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding-right: 80px;
+  }
+
+  .card-type-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--cream);
+    margin-bottom: 5px;
+  }
+
+  .card-artist {
+    font-size: 12px;
+    color: var(--gold-light);
+    font-style: italic;
+    margin-bottom: 13px;
+  }
+
+  .card-description {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 18px;
+  }
+
+
+  .card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 14px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    font-size: 11px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+  .card-link:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(201,168,76,0.06);
+  }
+  .card-link svg { flex-shrink: 0; }
+
+  .card-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  .meta-row { display: flex; align-items: flex-start; gap: 8px; font-size: 11.5px; }
+  .meta-icon { color: var(--gold); width: 12px; flex-shrink: 0; margin-top: 1px; }
+  .meta-val { color: var(--cream); line-height: 1.4; }
+  .meta-sub { color: var(--muted); font-size: 10.5px; }
+
+  .dates-badge {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 3px 9px;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .dates-badge.open { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2); color: var(--gold); }
+  .dates-badge.ending-soon { background: rgba(201,76,76,0.1); border: 1px solid rgba(201,76,76,0.3); color: var(--red); }
+  .dates-badge.upcoming { background: rgba(76,156,138,0.1); border: 1px solid rgba(76,156,138,0.3); color: var(--teal); }
+
+  .no-results {
+    grid-column: 1/-1;
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--muted);
+  }
+  .no-results h3 { font-family: 'Playfair Display', serif; font-size: 28px; margin-bottom: 12px; color: var(--cream); }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 26px 60px;
+    font-size: 12px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-brand { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 16px; }
+
+  @media (max-width: 768px) {
+    header, .grid-section, footer { padding-left: 20px; padding-right: 20px; }
+    .filters-section { padding: 12px 20px; }
+    .search-wrap input { width: 160px; }
+    header::after { font-size: 100px; }
+    .ml-auto { margin-left: 0; width: 100%; }
+    .search-wrap input { width: 100%; }
+  }
 </style>
 </head>
 <body>
+
 <header>
   <div class="header-label">Agenda Cultural · España 2025–2026</div>
   <h1>Exposiciones<br><em>de Arte</em></h1>
-  <p class="header-sub">Museos, centros culturales, galerías privadas y ferias de arte en España.<br>Actualizado a febrero de 2026.</p>
+  <p class="header-sub">Museos, centros culturales, galerías privadas y ferias de arte en España. Actualizado a febrero de 2026.</p>
   <div class="header-stats">
     <div class="stat"><span class="stat-num" id="total-count">0</span><span class="stat-label">Exposiciones</span></div>
     <div class="stat"><span class="stat-num">10+</span><span class="stat-label">Ciudades</span></div>
     <div class="stat"><span class="stat-num">5</span><span class="stat-label">Tipos de espacio</span></div>
   </div>
 </header>
+
 <section class="filters-section">
   <div class="filter-row">
     <span class="filter-label">Espacio</span>
@@ -155,6 +463,7 @@ footer { border-top: 1px solid var(--border); padding: 26px 60px; font-size: 12p
     </div>
   </div>
 </section>
+
 <section class="grid-section">
   <div class="results-bar">
     <span>Mostrando <span class="count" id="shown-count">0</span> de <span class="count" id="total-count2">0</span> exposiciones</span>
@@ -168,75 +477,79 @@ footer { border-top: 1px solid var(--border); padding: 26px 60px; font-size: 12p
   </div>
   <div class="grid" id="grid"></div>
 </section>
+
 <footer>
   <span class="footer-brand">Exposiciones España</span>
   <span>Museos · Galerías · Centros Culturales · Ferias · Febrero 2026</span>
 </footer>
+
 <script>
 const typeColors = {
-  'Pintura':'#c9a84c','Fotografía':'#4c9c8a','Arte Contemporáneo':'#9c4cc9',
-  'Arte Digital':'#4c7ac9','Escultura':'#c97a4c','Arte Conceptual':'#c94c4c',
-  'Multidisciplinar':'#8a7f70','Retrospectiva':'#e8c97a','Dibujo':'#6a9c4c',
+  'Pintura': '#c9a84c',
+  'Fotografía': '#4c9c8a',
+  'Arte Contemporáneo': '#9c4cc9',
+  'Arte Digital': '#4c7ac9',
+  'Escultura': '#c97a4c',
+  'Arte Conceptual': '#c94c4c',
+  'Multidisciplinar': '#8a7f70',
+  'Retrospectiva': '#e8c97a',
+  'Dibujo': '#6a9c4c',
 };
+
 const vtypeBadgeStyle = {
-  'Galería':'background:rgba(201,76,122,0.15);color:#c94c7a;border:1px solid rgba(201,76,122,0.3)',
-  'Museo':'background:rgba(76,122,201,0.15);color:#4c7ac9;border:1px solid rgba(76,122,201,0.3)',
-  'Centro Cultural':'background:rgba(76,156,138,0.15);color:#4c9c8a;border:1px solid rgba(76,156,138,0.3)',
-  'Feria':'background:rgba(156,76,201,0.15);color:#9c4cc9;border:1px solid rgba(156,76,201,0.3)',
-  'Espacio':'background:rgba(201,122,76,0.15);color:#c97a4c;border:1px solid rgba(201,122,76,0.3)',
+  'Galería':         'background:rgba(201,76,122,0.15);color:#c94c7a;border:1px solid rgba(201,76,122,0.3)',
+  'Museo':           'background:rgba(76,122,201,0.15);color:#4c7ac9;border:1px solid rgba(76,122,201,0.3)',
+  'Centro Cultural': 'background:rgba(76,156,138,0.15);color:#4c9c8a;border:1px solid rgba(76,156,138,0.3)',
+  'Feria':           'background:rgba(156,76,201,0.15);color:#9c4cc9;border:1px solid rgba(156,76,201,0.3)',
+  'Espacio':         'background:rgba(201,122,76,0.15);color:#c97a4c;border:1px solid rgba(201,122,76,0.3)',
 };
 
 const exhibitions = [
-  // ── MUSEOS ──────────────────────────────────────────────────────────────────
-  { title:"Vilhelm Hammershøi", artist:"Vilhelm Hammershøi", type:"Pintura", vtype:"Museo", city:"Madrid", venue:"Museo Nacional Thyssen-Bornemisza", url:"https://www.museothyssen.org", address:"Paseo del Prado, 8", open:"2026-02-17", close:"2026-05-31", description:"Primera gran retrospectiva en España del maestro danés. ~100 obras de interiores fríos e inquietantemente tranquilos: el silencio hecho pintura, en diálogo con Hopper y los maestros flamencos." },
-  { title:"Antonio Raphael Mengs — El más grande pintor del XVIII", artist:"Anton Raphael Mengs", type:"Pintura", vtype:"Museo", city:"Madrid", venue:"Museo del Prado", url:"https://www.museodelprado.es", address:"Calle Ruiz de Alarcón, 23", open:"2025-11-22", close:"2026-03-01", description:"La mayor exposición dedicada al pintor alemán, con ~150 pinturas. Revisión completa del referente máximo del Neoclasicismo europeo." },
-  { title:"Juan Muñoz — Historias de arte", artist:"Juan Muñoz", type:"Escultura", vtype:"Museo", city:"Madrid", venue:"Museo del Prado", url:"https://www.museodelprado.es", address:"Calle Ruiz de Alarcón, 23", open:"2025-11-18", close:"2026-03-08", description:"Retrospectiva del escultor español de proyección internacional, figura clave de la escultura contemporánea de finales del s. XX." },
-  { title:"El Prado en Femenino III", artist:"Isabel de Farnesio y artistas s. XVIII", type:"Arte Conceptual", vtype:"Museo", city:"Madrid", venue:"Museo del Prado", url:"https://www.museodelprado.es", address:"Calle Ruiz de Alarcón, 23", open:"2025-11-04", close:"2026-03-08", description:"Tercera edición del programa que visibiliza el papel de las mujeres en la historia del arte. Centrado en el legado de Isabel de Farnesio." },
-  { title:"HU/هُوَ — Bailad como si nadie os viera", artist:"Oliver Laxe", type:"Multidisciplinar", vtype:"Museo", city:"Madrid", venue:"Museo Nacional Reina Sofía", url:"https://www.museoreinasofia.es", address:"Calle Santa Isabel, 52", open:"2025-12-17", close:"2026-04-20", description:"Retrospectiva del cineasta Oliver Laxe. Ensayo visual sobre la capacidad del cine para capturar lo sagrado y lo telúrico." },
-  { title:"Máscara y compás", artist:"Varios artistas", type:"Arte Contemporáneo", vtype:"Museo", city:"Madrid", venue:"Museo Nacional Reina Sofía", url:"https://www.museoreinasofia.es", address:"Calle Santa Isabel, 52", open:"2025-10-08", close:"2026-03-16", description:"Propuesta que explora la intersección entre arte, ritual y geometría. Una de las muestras más ambiciosas de la temporada." },
-  { title:"Viva el arte vivo", artist:"Alberto Greco", type:"Arte Contemporáneo", vtype:"Museo", city:"Madrid", venue:"Museo Nacional Reina Sofía", url:"https://www.museoreinasofia.es", address:"Calle Santa Isabel, 52", open:"2026-02-11", close:"2026-06-08", description:"Retrospectiva de la trayectoria de Alberto Greco, figura clave de la vanguardia experimental y fundador del llamado arte vivo." },
-  { title:"Ewa Juszkiewicz — Monográfica", artist:"Ewa Juszkiewicz", type:"Pintura", vtype:"Museo", city:"Madrid", venue:"Museo Nacional Thyssen-Bornemisza", url:"https://www.museothyssen.org", address:"Paseo del Prado, 8", open:"2026-05-26", close:"2026-09-06", description:"Primera gran monográfica en España de la artista polaca. Relectura crítica del papel de la mujer en la historia del arte." },
-  { title:"Aurèlia Muñoz — Entes", artist:"Aurèlia Muñoz", type:"Escultura", vtype:"Museo", city:"Madrid", venue:"Museo Nacional Reina Sofía", url:"https://www.museoreinasofia.es", address:"Calle Santa Isabel, 52", open:"2026-04-29", close:"2026-09-07", description:"Grandes estructuras de macramé, esculturas-cometa e instalaciones de papel. 50 años de trayectoria de la escultora que une artesanía, surrealismo y abstracción." },
-  { title:"Victoria Eugenia de Battenberg", artist:"Documentos históricos y arte", type:"Arte Conceptual", vtype:"Museo", city:"Madrid", venue:"Galería de las Colecciones Reales", url:"https://www.patrimonionacional.es/visita/galeria-de-las-colecciones-reales", address:"Calle de Bailén, s/n", open:"2025-12-03", close:"2026-04-05", description:"+350 piezas para recorrer la vida y legado de la reina consorte que combinó su papel institucional con firme compromiso social y humanitario." },
-  { title:"Natalia Suárez — La escena oscura", artist:"Natalia Suárez", type:"Pintura", vtype:"Museo", city:"San Sebastián", venue:"Museo San Telmo", url:"https://www.santelmomuseoa.eus", address:"Plaza de Zuloaga, 1", open:"2025-12-05", close:"2026-03-01", description:"Pinturas con tono teatral que anuncian una acción a punto de suceder. Presencia femenina sugerida y energía del dibujo trasladada al lienzo." },
-  { title:"Fotografías de la Transición española", artist:"Varios fotógrafos", type:"Fotografía", vtype:"Museo", city:"Madrid", venue:"Museo Nacional Reina Sofía", url:"https://www.museoreinasofia.es", address:"Calle Santa Isabel, 52", open:"2025-11-18", close:"2026-05-30", description:"Cinco décadas de historia española a través de la fotografía. Protagonistas populares, inauguraciones históricas y la sociedad en transformación." },
-  { title:"Paloma Polo — Visiones Contemporáneas", artist:"Paloma Polo", type:"Multidisciplinar", vtype:"Museo", city:"Salamanca", venue:"DA2 — Domus Artium 2002", url:"https://www.da2salamanca.es", address:"Av. de la Aldehuela, s/n", open:"2025-11-13", close:"2026-02-22", description:"El 39.º ciclo de Visiones Contemporáneas: últimas tendencias del cine y el vídeo en España." },
-  { title:"Aurèlia Muñoz — Entes (MACBA)", artist:"Aurèlia Muñoz", type:"Escultura", vtype:"Museo", city:"Barcelona", venue:"MACBA — Museu d'Art Contemporani", url:"https://www.macba.cat", address:"Plaça dels Àngels, 1", open:"2026-11-05", close:"2027-03-29", description:"Retrospectiva completa de la escultora catalana: collages surrealistas, grandes macramés, esculturas-cometa e instalaciones de papel hecho a mano." },
-  { title:"Melanie Smith — Solo una cosa era extraña", artist:"Melanie Smith", type:"Multidisciplinar", vtype:"Museo", city:"Valencia", venue:"IVAM — Institut Valencià d'Art Modern", url:"https://www.ivam.es", address:"Carrer de Guillem de Castro, 118", open:"2026-09-24", close:"2027-02-28", description:"Dos últimas producciones: Estudios para ajolote y Tixinda. Explora la fragilidad de los ecosistemas y la cultura latinoamericana." },
-  { title:"Jasper Johns — Night Driver", artist:"Jasper Johns", type:"Retrospectiva", vtype:"Museo", city:"Bilbao", venue:"Museo Guggenheim Bilbao", url:"https://www.guggenheim-bilbao.eus", address:"Abandoibarra Etorb., 2", open:"2026-02-01", close:"2026-08-31", description:"Siete décadas del artista más influyente del arte de posguerra estadounidense. ~100 obras: banderas, dianas, mapas, abstracciones y obras recientes." },
-  { title:"Elena Asins — Antígona", artist:"Elena Asins", type:"Arte Conceptual", vtype:"Museo", city:"Málaga", venue:"Museo Picasso Málaga", url:"https://www.museopicassomalaga.org", address:"Palacio de Buenavista, C/ San Agustín", open:"2026-01-23", close:"2026-05-03", description:"Homenaje en el décimo aniversario de su fallecimiento. Figura clave del arte conceptual español, centrada en su instalación final Antígona." },
-
-  // ── CENTROS CULTURALES ───────────────────────────────────────────────────────
-  { title:"Matisse", artist:"Henri Matisse", type:"Pintura", vtype:"Centro Cultural", city:"Madrid", venue:"CaixaForum Madrid", url:"https://caixaforum.org/es/madrid", address:"Paseo del Prado, 36", open:"2025-10-01", close:"2026-02-22", description:"Un viaje por la obra del genial pintor francés. Obras del Centre Pompidou exploran su revolucionaria concepción del color que marcó el rumbo de la pintura del s. XX." },
-  { title:"Matisse (itinerante)", artist:"Henri Matisse", type:"Pintura", vtype:"Centro Cultural", city:"Barcelona", venue:"CaixaForum Barcelona", url:"https://caixaforum.org/es/barcelona", address:"Av. de Francesc Ferrer i Guàrdia, 6-8", open:"2026-03-01", close:"2026-08-16", description:"Tras su paso por Madrid, la gran retrospectiva de Matisse recala en Barcelona con obras del Centre Pompidou de París." },
-  { title:"Desenfocando — Otra visión del arte", artist:"Claude Monet y otros", type:"Pintura", vtype:"Centro Cultural", city:"Madrid", venue:"CaixaForum Madrid", url:"https://caixaforum.org/es/madrid", address:"Paseo del Prado, 36", open:"2025-09-16", close:"2026-04-12", description:"Una propuesta que reimagina la percepción visual. Monet y otros maestros contemplados a través de la mirada desenfocada, cuestionando cómo vemos el arte." },
-  { title:"La transición estética — España 1960–2020", artist:"Varios artistas", type:"Arte Contemporáneo", vtype:"Centro Cultural", city:"Madrid", venue:"Fundación Juan March", url:"https://www.march.es", address:"Calle Castelló, 77", open:"2026-02-27", close:"2026-04-12", description:"¿Y si la historia del arte la escribiera el público? Cómo llegó el arte internacional a España con 30 años de retraso y cómo lo recibió el gran público." },
-  { title:"Anders Zorn — Maestro sueco", artist:"Anders Zorn", type:"Pintura", vtype:"Centro Cultural", city:"Madrid", venue:"Fundación MAPFRE — Sala Recoletos", url:"https://www.fundacionmapfre.org/cultura/arte", address:"Paseo de Recoletos, 23", open:"2026-02-19", close:"2026-05-17", description:"Primer gran panorama en España del destacado pintor sueco de finales del XIX y principios del XX, maestro del retrato, el desnudo y el paisaje." },
-  { title:"The Fold. Hoda Afshar", artist:"Hoda Afshar", type:"Fotografía", vtype:"Centro Cultural", city:"Madrid", venue:"La Casa Encendida", url:"https://www.lacasaencendida.es", address:"Ronda de Valencia, 2", open:"2026-01-23", close:"2026-04-26", description:"Exposición individual de la artista iraní que investiga la fotografía colonial y los regímenes de percepción a partir del archivo del psiquiatra Gaëtan Gatian de Clérambault." },
-  { title:"Helen Levitt — Fotografías", artist:"Helen Levitt", type:"Fotografía", vtype:"Centro Cultural", city:"Barcelona", venue:"Fundació Mapfre KBr", url:"https://www.fundacionmapfre.org/cultura/arte/kbr-fotografia-barcelona", address:"Av. del Litoral, 30", open:"2025-09-23", close:"2026-01-25", description:"Primera muestra preparada desde el estudio de todos sus archivos. Levitt exploró Nueva York desde los 18 años, documentando la espontaneidad de la vida cotidiana." },
-  { title:"Elena del Rivero — Transitar la quema", artist:"Elena del Rivero", type:"Arte Conceptual", vtype:"Centro Cultural", city:"Barcelona", venue:"Fundació Antoni Tàpies", url:"https://www.fundaciotapies.org", address:"Carrer d'Aragó, 255", open:"2025-07-18", close:"2026-03-22", description:"Obra que explora memoria, cuerpo y transformación a través de materiales orgánicos. Parte de una acción realizada en la comarca gallega de A Baixa Límia." },
-  { title:"Cecilia Bengolea — El ruido que habita", artist:"Cecilia Bengolea", type:"Multidisciplinar", vtype:"Centro Cultural", city:"Córdoba", venue:"Centro de Creación Contemporánea C3A", url:"https://www.c3a.es", address:"Av. del Aeropuerto, s/n", open:"2025-11-27", close:"2026-05-24", description:"Vídeo, performance y esculturas de barro. Proyecto inmersivo que conecta danza, materialidad y tradiciones artesanales." },
-  { title:"Marisol — Cuando todo está por comenzar", artist:"Marisol", type:"Dibujo", vtype:"Centro Cultural", city:"Santander", venue:"Centro Botín", url:"https://www.centrobotin.org", address:"Muelle de Albareda, s/n", open:"2026-01-01", close:"2026-09-30", description:"Primera retrospectiva de los dibujos de la artista venezolano-estadounidense. +100 obras 1949–2016, más esculturas y películas de Warhol." },
-
-  // ── ESPACIOS ─────────────────────────────────────────────────────────────────
-  { title:"Jordi Teixidor — Abstracción española", artist:"Jordi Teixidor", type:"Pintura", vtype:"Espacio", city:"Madrid", venue:"Sala Alcalá 31", url:"https://www.comunidad.madrid/actividades/2026/exposicion-jordi-teixidor", address:"Calle Alcalá, 31", open:"2026-01-13", close:"2026-04-12", description:"50 obras desde los años 60 del máximo representante de la abstracción española. Premio Nacional de Artes Plásticas e investigador de la monocromía." },
-  { title:"Cleopatra — Experiencia inmersiva", artist:"Arte Digital Helenístico", type:"Arte Digital", vtype:"Espacio", city:"Madrid", venue:"MAD — Madrid Artes Digitales", url:"https://www.mad.es", address:"Av. de Brasil, 6", open:"2025-11-01", close:"2026-12-31", description:"Experiencia inmersiva que lleva al corazón del Egipto helenístico para redescubrir a una de las mujeres más fascinantes de la historia." },
-
-  // ── GALERÍAS ─────────────────────────────────────────────────────────────────
-  { title:"Iván Argote — 8,337,283,136", artist:"Iván Argote", type:"Arte Contemporáneo", vtype:"Galería", city:"Madrid", venue:"Galería Albarrán Bourdais", url:"https://albarran-bourdais.com", address:"Calle Barquillo, 13", open:"2025-11-21", close:"2026-02-14", description:"El artista colombiano reflexiona sobre la humanidad como número, la escala global y las tensiones entre lo individual y lo colectivo." },
-  { title:"Naturaleza nerviosa", artist:"María Luisa Fernández", type:"Arte Contemporáneo", vtype:"Galería", city:"Madrid", venue:"Maisterravalbuena", url:"https://www.maisterravalbuena.com", address:"Calle Hospital, 8", open:"2026-01-22", close:"2026-02-21", description:"Nuevas pinturas de la artista vasca que exploran la tensión entre lo orgánico y lo construido, entre la naturaleza y el gesto pictórico acelerado." },
-  { title:"Hêmérê", artist:"Frédéric Dumoulin", type:"Pintura", vtype:"Galería", city:"Madrid", venue:"Alzueta Gallery", url:"https://www.alzuetagallery.com", address:"Calle Marqués de Monasterio, 1", open:"2025-11-22", close:"2026-02-10", description:"El artista belga explora el tiempo y la duración tomando como punto de partida la luz mediterránea y la experiencia de los días de verano." },
-  { title:"One Another", artist:"Thilo Heinzmann", type:"Pintura", vtype:"Galería", city:"Madrid", venue:"Ehrhardt Flórez", url:"https://ehrhardtflorez.com", address:"Calle San Lorenzo, 11", open:"2025-11-22", close:"2026-02-14", description:"El pintor alemán presenta grandes lienzos donde capas translúcidas crean profundidades inesperadas. Una indagación en la materia y la transparencia." },
-  { title:"Lucía C. Pino — Proyecto artista", artist:"Lucía C. Pino", type:"Escultura", vtype:"Galería", city:"Madrid", venue:"Prats Nogueras Blanchard", url:"https://www.prats-noguerasblanchard.com", address:"Calle Doctor Fourquet, 28", open:"2026-03-04", close:"2026-03-08", description:"Proyecto especial en ARCOmadrid 2026. Esculturas que dialogan entre el cuerpo, el espacio doméstico y los nuevos materiales." },
-  { title:"Ugo Rondinone", artist:"Ugo Rondinone", type:"Escultura", vtype:"Galería", city:"Madrid", venue:"Esther Schipper Madrid", url:"https://www.estherschipper.com", address:"Calle José Marañón, 4", open:"2026-02-20", close:"2026-04-20", description:"Esculturas del artista suizo que exploran estados emocionales extremos. Figuras de colores vivos que evocan melancolía, humor y lo grotesco simultáneamente." },
-  { title:"Diana Policarpo", artist:"Diana Policarpo", type:"Arte Contemporáneo", vtype:"Galería", city:"Madrid", venue:"Carlier / Gebauer Madrid", url:"https://www.carliergebauer.com", address:"Calle José Marañón, 4", open:"2025-11-14", close:"2026-02-21", description:"Instalaciones multisensoriales de la artista portuguesa: sonido, vídeo y escultura que investigan los sistemas de control, el cuerpo y la tecnología." },
-  { title:"El ornamento no es un crimen", artist:"Varios artistas", type:"Arte Contemporáneo", vtype:"Galería", city:"Madrid", venue:"La Caja Negra", url:"https://www.lacajanegra.com", address:"Calle Fernando VI, 17", open:"2025-11-22", close:"2026-01-31", description:"Exposición colectiva que reivindica la ornamentación frente a la austeridad conceptual. Obras que celebran el exceso y la belleza superficial como acto político." },
-  { title:"Raúl Silva — F2 + Crisis", artist:"Raúl Silva", type:"Arte Contemporáneo", vtype:"Galería", city:"Madrid", venue:"F2 Galería", url:"https://f2galeria.com", address:"Calle Doctor Fourquet, 28", open:"2026-01-20", close:"2026-03-15", description:"Obra nueva que investiga las tensiones entre cultura pop, historia y memoria colectiva. Proyecto conjunto de F2 Galería y Crisis." },
-  { title:"Antoni Miralda — Proyecto ARCOmadrid", artist:"Antoni Miralda", type:"Multidisciplinar", vtype:"Galería", city:"Madrid", venue:"Galería Senda", url:"https://www.galeriasenda.com", address:"IFEMA, Pabellón 7-9 (stand)", open:"2026-03-04", close:"2026-03-08", description:"Proyecto especial en ARCOmadrid que honra al artista catalán, pionero del arte relacional y la cultura de la alimentación como fenómeno estético." },
-  { title:"Programa expositivo 2026", artist:"Varios artistas", type:"Fotografía", vtype:"Galería", city:"Madrid", venue:"La Fábrica Galería", url:"https://www.lafabrica.com", address:"Calle Alameda, 9", open:"2026-01-01", close:"2026-12-31", description:"Espacio especializado en fotografía y arte contemporáneo, referente del triángulo del arte de Madrid. Programación anual con artistas nacionales e internacionales." },
-
-  // ── FERIA ────────────────────────────────────────────────────────────────────
-  { title:"ARCOmadrid 2026 — 45ª edición", artist:"211 galerías · 30 países", type:"Arte Contemporáneo", vtype:"Feria", city:"Madrid", venue:"IFEMA Madrid — Pabellones 7 y 9", url:"https://www.arco.ifema.es", address:"Av. del Partenón, s/n", open:"2026-03-04", close:"2026-03-08", description:"La feria de arte contemporáneo más importante de España. 211 galerías de 30 países con secciones: ARCO2045, Opening — Nuevas Galerías y Perfiles | Arte Latinoamericano. Público general desde el 6 marzo." },
+  // MUSEOS / CENTROS CULTURALES / ESPACIOS
+  { title:"Matisse", artist:"Henri Matisse", type:"Pintura", vtype:"Centro Cultural", city:"Madrid", venue:"CaixaForum Madrid", address:"Paseo del Prado, 36", open:"2025-10-01", close:"2026-02-22", website:"https://caixaforum.org/es/madrid", description:"Un viaje por la obra del genial pintor francés. Obras del Centre Pompidou exploran su revolucionaria concepción del color que marcó el rumbo de la pintura del s. XX." },
+  { title:"Matisse (itinerante)", artist:"Henri Matisse", type:"Pintura", vtype:"Centro Cultural", city:"Barcelona", venue:"CaixaForum Barcelona", address:"Av. de Francesc Ferrer i Guàrdia, 6-8", open:"2026-03-01", close:"2026-08-16", website:"https://caixaforum.org/es/barcelona", description:"Tras su paso por Madrid, la gran retrospectiva de Matisse recala en Barcelona con obras del Centre Pompidou de París." },
+  { title:"Vilhelm Hammershøi", artist:"Vilhelm Hammershøi", type:"Pintura", vtype:"Museo", city:"Madrid", venue:"Museo Nacional Thyssen-Bornemisza", address:"Paseo del Prado, 8", open:"2026-02-17", close:"2026-05-31", website:"https://www.museothyssen.org", description:"Primera gran retrospectiva en España del maestro danés. ~100 obras de interiores fríos e inquietantemente tranquilos: el silencio hecho pintura, en diálogo con Hopper y los maestros flamencos." },
+  { title:"Antonio Raphael Mengs — El más grande pintor del XVIII", artist:"Anton Raphael Mengs", type:"Pintura", vtype:"Museo", city:"Madrid", venue:"Museo del Prado", address:"Calle Ruiz de Alarcón, 23", open:"2025-11-22", close:"2026-03-01", website:"https://www.museodelprado.es", description:"La mayor exposición dedicada al pintor alemán, con ~150 pinturas. Revisión completa del referente máximo del Neoclasicismo europeo." },
+  { title:"Juan Muñoz — Historias de arte", artist:"Juan Muñoz", type:"Escultura", vtype:"Museo", city:"Madrid", venue:"Museo del Prado", address:"Calle Ruiz de Alarcón, 23", open:"2025-11-18", close:"2026-03-08", website:"https://www.museodelprado.es", description:"Retrospectiva del escultor español de proyección internacional, figura clave de la escultura contemporánea de finales del s. XX." },
+  { title:"El Prado en Femenino III", artist:"Isabel de Farnesio y artistas s. XVIII", type:"Arte Conceptual", vtype:"Museo", city:"Madrid", venue:"Museo del Prado", address:"Calle Ruiz de Alarcón, 23", open:"2025-11-04", close:"2026-03-08", website:"https://www.museodelprado.es", description:"Tercera edición del programa que visibiliza el papel de las mujeres en la historia del arte. Centrado en el legado de Isabel de Farnesio." },
+  { title:"HU/هُوَ — Bailad como si nadie os viera", artist:"Oliver Laxe", type:"Multidisciplinar", vtype:"Museo", city:"Madrid", venue:"Museo Nacional Reina Sofía", address:"Calle Santa Isabel, 52", open:"2025-12-17", close:"2026-04-20", website:"https://www.museoreinasofia.es", description:"Retrospectiva del cineasta Oliver Laxe. Ensayo visual sobre la capacidad del cine para capturar lo sagrado y lo telúrico, con nominación a los Globos de Oro." },
+  { title:"Máscara y compás", artist:"Varios artistas", type:"Arte Contemporáneo", vtype:"Museo", city:"Madrid", venue:"Museo Nacional Reina Sofía", address:"Calle Santa Isabel, 52", open:"2025-10-08", close:"2026-03-16", website:"https://www.museoreinasofia.es", description:"Propuesta que explora la intersección entre arte, ritual y geometría. Una de las muestras más ambiciosas de la temporada." },
+  { title:"Viva el arte vivo", artist:"Colectivo", type:"Arte Contemporáneo", vtype:"Museo", city:"Madrid", venue:"Museo Nacional Reina Sofía", address:"Calle Santa Isabel, 52", open:"2026-02-11", close:"2026-06-08", website:"https://www.museoreinasofia.es", description:"Celebración de la creación artística viva y su capacidad para conectar con el público contemporáneo." },
+  { title:"Desenfocando — Otra visión del arte", artist:"Claude Monet y otros", type:"Pintura", vtype:"Centro Cultural", city:"Madrid", venue:"CaixaForum Madrid", address:"Paseo del Prado, 36", open:"2025-09-16", close:"2026-04-12", website:"https://caixaforum.org/es/madrid", description:"Una propuesta que reimagina la percepción visual. Monet y otros maestros contemplados a través de la mirada desenfocada, cuestionando cómo vemos el arte." },
+  { title:"Jordi Teixidor — Abstracción española", artist:"Jordi Teixidor", type:"Pintura", vtype:"Espacio", city:"Madrid", venue:"Sala Alcalá 31", address:"Calle Alcalá, 31", open:"2026-01-13", close:"2026-04-12", website:"https://www.comunidad.madrid/centros/sala-alcala-31", description:"50 obras desde los años 60 del máximo representante de la abstracción española. Premio Nacional de Artes Plásticas e investigador de la monocromía." },
+  { title:"Cleopatra — Experiencia inmersiva", artist:"Arte Digital Helenístico", type:"Arte Digital", vtype:"Espacio", city:"Madrid", venue:"MAD — Madrid Artes Digitales", address:"Av. de Brasil, 6", open:"2025-11-01", close:"2026-12-31", website:"https://www.mad.es", description:"Experiencia inmersiva que lleva al corazón del Egipto helenístico para redescubrir a una de las mujeres más fascinantes de la historia." },
+  { title:"Ewa Juszkiewicz — Monográfica", artist:"Ewa Juszkiewicz", type:"Pintura", vtype:"Museo", city:"Madrid", venue:"Museo Nacional Thyssen-Bornemisza", address:"Paseo del Prado, 8", open:"2026-05-26", close:"2026-09-06", website:"https://www.museothyssen.org", description:"Primera gran monográfica en España de la artista polaca. Relectura crítica del papel de la mujer en la historia del arte." },
+  { title:"La transición estética — España 1960–2020", artist:"Varios artistas", type:"Arte Contemporáneo", vtype:"Centro Cultural", city:"Madrid", venue:"Fundación Juan March", address:"Calle Castelló, 77", open:"2026-02-27", close:"2026-04-12", website:"https://www.march.es", description:"¿Y si la historia del arte la escribiera el público? Cómo llegó el arte internacional a España con 30 años de retraso y cómo lo recibió el gran público." },
+  { title:"Aurèlia Muñoz — Entes (Reina Sofía)", artist:"Aurèlia Muñoz", type:"Escultura", vtype:"Museo", city:"Madrid", venue:"Museo Nacional Reina Sofía", address:"Calle Santa Isabel, 52", open:"2026-04-29", close:"2026-09-07", website:"https://www.museoreinasofia.es", description:"Grandes estructuras de macramé, esculturas-cometa e instalaciones de papel. 50 años de trayectoria de la escultora que une artesanía, surrealismo y abstracción." },
+  { title:"Victoria Eugenia de Battenberg", artist:"Documentos históricos y arte", type:"Arte Conceptual", vtype:"Museo", city:"Madrid", venue:"Galería de las Colecciones Reales", address:"Calle de Bailén, s/n", open:"2025-12-03", close:"2026-04-05", website:"https://www.galeriadelascoleccionesreales.es", description:"+350 piezas para recorrer la vida y legado de la reina consorte que combinó su papel institucional con firme compromiso social y humanitario." },
+  { title:"Anders Zorn — Maestro sueco", artist:"Anders Zorn", type:"Pintura", vtype:"Centro Cultural", city:"Madrid", venue:"Fundación MAPFRE — Sala Recoletos", address:"Paseo de Recoletos, 23", open:"2026-02-19", close:"2026-05-17", website:"https://www.fundacionmapfre.org/cultura", description:"Primer gran panorama en España del destacado pintor sueco de finales del XIX y principios del XX, maestro del retrato, el desnudo y el paisaje." },
+  { title:"The Fold. Hoda Afshar", artist:"Hoda Afshar", type:"Fotografía", vtype:"Centro Cultural", city:"Madrid", venue:"La Casa Encendida", address:"Ronda de Valencia, 2", open:"2026-01-23", close:"2026-04-26", website:"https://www.lacasaencendida.es", description:"Exposición individual de la artista iraní que investiga la fotografía colonial y los regímenes de percepción a partir del archivo del psiquiatra Gaëtan Gatian de Clérambault." },
+  { title:"Jasper Johns — Night Driver", artist:"Jasper Johns", type:"Retrospectiva", vtype:"Museo", city:"Bilbao", venue:"Museo Guggenheim Bilbao", address:"Abandoibarra Etorb., 2", open:"2026-02-01", close:"2026-08-31", website:"https://www.guggenheim-bilbao.eus", description:"Siete décadas del artista más influyente del arte de posguerra estadounidense. ~100 obras: banderas, dianas, mapas, abstracciones y obras recientes." },
+  { title:"Marisol — Cuando todo está por comenzar", artist:"Marisol", type:"Dibujo", vtype:"Centro Cultural", city:"Santander", venue:"Centro Botín", address:"Muelle de Albareda, s/n", open:"2026-01-01", close:"2026-09-30", website:"https://www.centrobotin.org", description:"Primera retrospectiva de los dibujos de la artista venezolano-estadounidense. +100 obras 1949–2016, más esculturas y películas de Warhol." },
+  { title:"Cecilia Bengolea — El ruido que habita", artist:"Cecilia Bengolea", type:"Multidisciplinar", vtype:"Centro Cultural", city:"Córdoba", venue:"Centro de Creación Contemporánea C3A", address:"Av. del Aeropuerto, s/n", open:"2025-11-27", close:"2026-05-24", website:"https://www.c3a.es", description:"Vídeo, performance y esculturas de barro. Proyecto inmersivo que conecta danza, materialidad y tradiciones artesanales." },
+  { title:"Elena Asins — Antígona", artist:"Elena Asins", type:"Arte Conceptual", vtype:"Museo", city:"Málaga", venue:"Museo Picasso Málaga", address:"Palacio de Buenavista, C/ San Agustín", open:"2026-01-23", close:"2026-05-03", website:"https://www.museopicassomalaga.org", description:"Homenaje en el décimo aniversario de su fallecimiento. Figura clave del arte conceptual español, centrada en su instalación final Antígona." },
+  { title:"Elena del Rivero — Transitar la quema", artist:"Elena del Rivero", type:"Arte Conceptual", vtype:"Centro Cultural", city:"Barcelona", venue:"Fundació Antoni Tàpies", address:"Carrer d'Aragó, 255", open:"2025-07-18", close:"2026-03-22", website:"https://www.fundaciotapies.org", description:"Obra que explora memoria, cuerpo y transformación a través de materiales orgánicos. Parte de una acción realizada en la comarca gallega de A Baixa Límia." },
+  { title:"Natalia Suárez — La escena oscura", artist:"Natalia Suárez", type:"Pintura", vtype:"Museo", city:"San Sebastián", venue:"Museo San Telmo", address:"Plaza de Zuloaga, 1", open:"2025-12-05", close:"2026-03-01", website:"https://www.santelmomuseoa.eus", description:"Pinturas con tono teatral que anuncian una acción a punto de suceder. Presencia femenina sugerida y energía del dibujo trasladada al lienzo." },
+  { title:"Fotografías de la Transición española", artist:"Varios fotógrafos", type:"Fotografía", vtype:"Museo", city:"Madrid", venue:"Museo Nacional Reina Sofía", address:"Calle Santa Isabel, 52", open:"2025-11-18", close:"2026-05-30", website:"https://www.museoreinasofia.es", description:"Cinco décadas de historia española a través de la fotografía. Protagonistas populares, inauguraciones históricas y la sociedad en transformación." },
+  { title:"Paloma Polo — Visiones Contemporáneas", artist:"Paloma Polo", type:"Multidisciplinar", vtype:"Museo", city:"Salamanca", venue:"DA2 — Domus Artium 2002", address:"Av. de la Aldehuela, s/n", open:"2025-11-13", close:"2026-02-22", website:"https://www.da2salamanca.es", description:"El 39.º ciclo de Visiones Contemporáneas: últimas tendencias del cine y el vídeo en España." },
+  { title:"Aurèlia Muñoz — Entes (MACBA)", artist:"Aurèlia Muñoz", type:"Escultura", vtype:"Museo", city:"Barcelona", venue:"MACBA — Museu d'Art Contemporani", address:"Plaça dels Àngels, 1", open:"2026-11-05", close:"2027-03-29", website:"https://www.macba.cat", description:"Retrospectiva completa de la escultora catalana: collages surrealistas, grandes macramés, esculturas-cometa e instalaciones de papel hecho a mano." },
+  { title:"Melanie Smith — Solo una cosa era extraña", artist:"Melanie Smith", type:"Multidisciplinar", vtype:"Museo", city:"Valencia", venue:"IVAM — Institut Valencià d'Art Modern", address:"Carrer de Guillem de Castro, 118", open:"2026-09-24", close:"2027-02-28", website:"https://www.ivam.es", description:"Dos últimas producciones: Estudios para ajolote y Tixinda. Explora la fragilidad de los ecosistemas y la cultura latinoamericana." },
+  // GALERÍAS PRIVADAS
+  { title:"Iván Argote — 8,337,283,136", artist:"Iván Argote", type:"Arte Contemporáneo", vtype:"Galería", city:"Madrid", venue:"Galería Albarrán Bourdais", address:"Calle Barquillo, 13", open:"2025-11-21", close:"2026-02-14", website:"https://www.albarranbourdais.com", description:"El artista colombiano reflexiona sobre la humanidad como número, la escala global y las tensiones entre lo individual y lo colectivo." },
+  { title:"Naturaleza nerviosa", artist:"María Luisa Fernández", type:"Arte Contemporáneo", vtype:"Galería", city:"Madrid", venue:"Maisterravalbuena", address:"Calle Hospital, 8", open:"2026-01-22", close:"2026-02-21", website:"https://www.maisterravalbuena.com", description:"Nuevas pinturas de la artista vasca que exploran la tensión entre lo orgánico y lo construido, entre la naturaleza y el gesto pictórico acelerado." },
+  { title:"Hêmérê", artist:"Frédéric Dumoulin", type:"Pintura", vtype:"Galería", city:"Madrid", venue:"Alzueta Gallery", address:"Calle Marqués de Monasterio, 1", open:"2025-11-22", close:"2026-02-10", website:"https://www.alzuetagallery.com", description:"El artista belga explora el tiempo y la duración tomando como punto de partida la luz mediterránea y la experiencia de los días de verano." },
+  { title:"One Another", artist:"Thilo Heinzmann", type:"Pintura", vtype:"Galería", city:"Madrid", venue:"Ehrhardt Flórez", address:"Calle San Lorenzo, 11", open:"2025-11-22", close:"2026-02-14", website:"https://www.ehrhardtflorez.com", description:"El pintor alemán presenta grandes lienzos donde capas translúcidas crean profundidades inesperadas. Una indagación en la materia y la transparencia." },
+  { title:"Ghostland", artist:"Robert Mead", type:"Arte Contemporáneo", vtype:"Galería", city:"Madrid", venue:"Galería Belmonte", address:"Calle Amor de Dios, 1", open:"2025-11-22", close:"2026-02-21", website:"https://www.galeriabelmonte.com", description:"Paisajes imaginarios y territorios emocionales a través de pinturas y objetos que evocan presencias invisibles y geografías interiores." },
+  { title:"Lucía C. Pino — Proyecto artista", artist:"Lucía C. Pino", type:"Escultura", vtype:"Galería", city:"Madrid", venue:"Prats Nogueras Blanchard", address:"Calle Doctor Fourquet, 28", open:"2026-03-04", close:"2026-03-08", website:"https://www.pnb.art", description:"Proyecto especial en ARCOmadrid 2026. Esculturas que dialogan entre el cuerpo, el espacio doméstico y los nuevos materiales." },
+  { title:"Amparo de la Sota", artist:"Amparo de la Sota", type:"Arte Contemporáneo", vtype:"Galería", city:"Madrid", venue:"Galería Alegría", address:"Calle Fernando VI, 7", open:"2026-02-15", close:"2026-04-15", website:"https://www.galeriaalegriaarte.com", description:"Nueva exposición que trabaja en la intersección entre pintura, instalación y performance, explorando las fronteras del espacio expositivo." },
+  { title:"Ugo Rondinone", artist:"Ugo Rondinone", type:"Escultura", vtype:"Galería", city:"Madrid", venue:"Esther Schipper Madrid", address:"Calle José Marañón, 4", open:"2026-02-20", close:"2026-04-20", website:"https://www.estherschipper.com", description:"Esculturas del artista suizo que exploran estados emocionales extremos. Figuras de colores vivos que evocan melancolía, humor y lo grotesco simultáneamente." },
+  { title:"Diana Policarpo", artist:"Diana Policarpo", type:"Arte Contemporáneo", vtype:"Galería", city:"Madrid", venue:"Carlier / Gebauer Madrid", address:"Calle José Marañón, 4", open:"2025-11-14", close:"2026-02-21", website:"https://www.carliergebauer.com", description:"Instalaciones multisensoriales de la artista portuguesa: sonido, vídeo y escultura que investigan los sistemas de control, el cuerpo y la tecnología." },
+  { title:"El ornamento no es un crimen", artist:"Varios artistas", type:"Arte Contemporáneo", vtype:"Galería", city:"Madrid", venue:"La Caja Negra", address:"Calle Fernando VI, 17", open:"2025-11-22", close:"2026-01-31", website:"https://www.lacajanegra.com", description:"Exposición colectiva que reivindica la ornamentación frente a la austeridad conceptual. Obras que celebran el exceso y la belleza superficial como acto político." },
+  { title:"Raúl Silva — F2 + Crisis", artist:"Raúl Silva", type:"Arte Contemporáneo", vtype:"Galería", city:"Madrid", venue:"F2 Galería", address:"Calle Doctor Fourquet, 28", open:"2026-01-20", close:"2026-03-15", website:"https://www.f2galeria.com", description:"Obra nueva que investiga las tensiones entre cultura pop, historia y memoria colectiva. Proyecto conjunto de F2 Galería y Crisis." },
+  { title:"Antoni Miralda — Proyecto ARCOmadrid", artist:"Antoni Miralda", type:"Multidisciplinar", vtype:"Galería", city:"Madrid", venue:"Galería Senda", address:"IFEMA, Pabellón 7-9 (stand)", open:"2026-03-04", close:"2026-03-08", website:"https://www.galeriasenda.com", description:"Proyecto especial en ARCOmadrid que honra al artista catalán, pionero del arte relacional y la cultura de la alimentación como fenómeno estético." },
+  { title:"La lucidez de la mirada", artist:"Francesc Català-Roca", type:"Fotografía", vtype:"Galería", city:"Madrid", venue:"La Fábrica Galería", address:"Calle Alameda, 9", open:"2026-01-20", close:"2026-03-08", website:"https://www.lafabrica.com/exposicion/la-lucidez-de-la-mirada/", description:"Gran retrospectiva del fotógrafo catalán Francesc Català-Roca, uno de los maestros de la fotografía española del siglo XX. Sede: La Pasión, espacio expositivo de La Fábrica." },
+  // FERIA
+  { title:"ARCOmadrid 2026 — 45ª edición", artist:"211 galerías · 30 países", type:"Arte Contemporáneo", vtype:"Feria", city:"Madrid", venue:"IFEMA Madrid — Pabellones 7 y 9", address:"Av. del Partenón, s/n", open:"2026-03-04", close:"2026-03-08", website:"https://www.ifema.es/arco", description:"La feria de arte contemporáneo más importante de España. 211 galerías de 30 países con secciones: ARCO2045, Opening — Nuevas Galerías y Perfiles | Arte Latinoamericano. Público general desde el 6 marzo." }
 ];
 
 let activeType = 'all', activeCity = 'all', activeVtype = 'all', searchQuery = '';
@@ -264,6 +577,7 @@ function renderGrid() {
     (activeVtype === 'all' || e.vtype === activeVtype) &&
     (!q || [e.title, e.artist, e.venue, e.city, e.description].some(s => s.toLowerCase().includes(q)))
   );
+
   const total = exhibitions.length;
   document.getElementById('shown-count').textContent = filtered.length;
   document.getElementById('total-count').textContent = total;
@@ -278,30 +592,31 @@ function renderGrid() {
     const st = getStatus(e.open, e.close);
     const dotColor = typeColors[e.type] || '#8a7f70';
     const bStyle = vtypeBadgeStyle[e.vtype] || '';
-    const venueHtml = e.url
-      ? `<a href="${e.url}" target="_blank" rel="noopener" class="venue-link">${e.venue}</a>`
-      : e.venue;
     return `
-      <div class="card" data-type="${e.type}" data-vtype="${e.vtype}" style="animation-delay:${Math.min(i*22,400)}ms">
-        <span class="vtype-badge" style="${bStyle}">${e.vtype}</span>
-        <div class="card-type" style="color:${dotColor}">
-          <span class="card-type-dot" style="background:${dotColor}"></span>${e.type}
-        </div>
-        <div class="card-title">${e.title}</div>
-        <div class="card-artist">${e.artist}</div>
-        <div class="card-description">${e.description}</div>
-        <div class="card-meta">
-          <div class="meta-row">
-            <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span><span class="meta-val">${venueHtml}</span><br><span class="meta-sub">${e.address} · ${e.city}</span></span>
-          </div>
-          <div class="meta-row">
-            <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-            <span class="meta-val">${formatDate(e.open)} — ${formatDate(e.close)}</span>
-          </div>
-        </div>
-        <span class="dates-badge ${st.cls}">${st.label}</span>
-      </div>`;
+<div class="card" data-type="${e.type}" data-vtype="${e.vtype}" style="animation-delay:${Math.min(i*22,400)}ms">
+  <span class="vtype-badge" style="${bStyle}">${e.vtype}</span>
+  <div class="card-type" style="color:${dotColor}">
+    <span class="card-type-dot" style="background:${dotColor}"></span>${e.type}
+  </div>
+  <div class="card-title">${e.title}</div>
+  <div class="card-artist">${e.artist}</div>
+  <div class="card-description">${e.description}</div>
+  <div class="card-meta">
+    <div class="meta-row">
+      <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span><span class="meta-val">${e.venue}</span><br><span class="meta-sub">${e.address} · ${e.city}</span></span>
+    </div>
+    <div class="meta-row">
+      <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      <span class="meta-val">${formatDate(e.open)} — ${formatDate(e.close)}</span>
+    </div>
+  </div>
+  <span class="dates-badge ${st.cls}">${st.label}</span>
+  ${e.website ? `<a class="card-link" href="${e.website}" target="_blank" rel="noopener">
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    Ver en web
+  </a>` : ''}
+</div>`;
   }).join('');
 }
 
@@ -317,10 +632,7 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
   });
 });
 
-document.getElementById('search').addEventListener('input', e => {
-  searchQuery = e.target.value;
-  renderGrid();
-});
+document.getElementById('search').addEventListener('input', e => { searchQuery = e.target.value; renderGrid(); });
 
 renderGrid();
 </script>
